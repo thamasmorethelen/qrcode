@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="qr">
+    <a href="{{ qrcode(request.form['qr']) }}" download>
+    <img src="{{ qrcode(request.form['qr']) }}">
+    </a>
+</div>
+{% endblock %}

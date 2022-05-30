@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <section class="header"> 
+            <h1>QRCode Generator</h1>
+        </section>
+        <section class="form">
+            <form action = "{{  url_for('qr') }}", method="POST">
+                <label for="qr">Enter a url and press return</label>
+                <input type="text", name="qr", id="qr">
+            </form>
+        </section>
+{% endblock %}

@@ -1,14 +1,22 @@
-import qrcode
+from flask import (Flask, render_template,
+                   url_for, request)
+from flask_qrcode import QRcode
 
-qr = qrcode.QRCode(
-    version=None,
-    error_correction=qrcode.constants.ERROR_CORRECT_L,
-    box_size=10,
-    border=4,
-)
-qr.add_data('https://thomasmorethelen.com')
-qr.make(fit=True)
+application = Flask(__name__)
+qrcode = QRcode(application)
 
-img = qr.make_image(fill_color="black", back_color="white")
 
-img.save('website.png')
+@application.route('/')
+def index():
+    return render_template('index.html')
+
+
+@application.route('/qr', methods=["GET", 'POST'])
+def qr():
+    if request.form:
+        return render_template('qr.html')
+    return render_template('index.html')
+
+
+if __name__ == '__main__':
+    application.run(debug=True)
