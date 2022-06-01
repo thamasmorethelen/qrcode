@@ -3,6 +3,8 @@
 {% block content %}
 <div class="qr">
     <img src="{{ qrcode(request.form['qr']) }}">
-    <a href="{{ qrcode(request.form['qr']) }}" download>Download</a>
+    <section class="download">
+        <a href="{{ qrcode(request.form['qr']) }}" download>Download</a>
+    </section>
 </div>
 {% endblock %}
